@@ -1,0 +1,20 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#04070F"/>
+      <stop offset="1" stop-color="#1A1A1A"/>
+    </linearGradient>
+    <linearGradient id="line" x1="131" y1="469" x2="1027" y2="469" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#210DFF"/>
+      <stop offset="1" stop-color="#7A8CFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1032" cy="110" r="140" fill="#210DFF" fill-opacity="0.2"/>
+  <circle cx="119" cy="560" r="180" fill="#210DFF" fill-opacity="0.12"/>
+  <rect x="132" y="472" width="896" height="4" rx="2" fill="url(#line)"/>
+  <text x="132" y="224" fill="#EAF3FF" font-size="88" font-family="'Lato', sans-serif" font-weight="700">CENTURY</text>
+  <text x="132" y="302" fill="#EAF3FF" font-size="42" font-family="'Lato', sans-serif" font-weight="600">Corporate AI Execution Platform</text>
+  <text x="132" y="364" fill="#B9D7FF" font-size="30" font-family="'Lato', sans-serif" font-weight="400">Workflow | Services | Assistants | Observability | Audit-ready</text>
+  <text x="132" y="548" fill="#9CC6FF" font-size="28" font-family="'Lato', sans-serif" font-weight="500">century-ai.by</text>
+</svg>

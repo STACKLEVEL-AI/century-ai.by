@@ -1,0 +1,42 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes cy-node {
+      0%, 100% { opacity: .55; transform: scale(1); }
+      50% { opacity: 0; transform: scale(1.7); }
+    }
+
+    @keyframes cy-halo {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+
+    .pulse,
+    .node {
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .pulse {
+      animation: cy-node 2.6s ease-out infinite;
+    }
+
+    .node {
+      animation: cy-halo 2.6s ease-in-out infinite;
+    }
+  </style>
+  <circle class="pulse" cx="16" cy="16" r="14" fill="url(#pulseGradient)" />
+  <circle cx="16" cy="16" r="13" stroke="#240CFF" stroke-opacity=".35" />
+  <g class="node" filter="url(#nodeShadow)">
+    <circle cx="16" cy="16" r="6" fill="#240CFF" />
+    <circle cx="16" cy="16" r="2" fill="white" />
+  </g>
+  <defs>
+    <radialGradient id="pulseGradient" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(16 16) rotate(90) scale(14)">
+      <stop stop-color="#240CFF" stop-opacity=".28" />
+      <stop offset="1" stop-color="#240CFF" stop-opacity="0" />
+    </radialGradient>
+    <filter id="nodeShadow" x="4" y="4" width="24" height="24" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#240CFF" flood-opacity=".55" />
+    </filter>
+  </defs>
+</svg>

@@ -1,0 +1,29 @@
+image: node:22-alpine
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH
+
+stages:
+  - verify
+
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - .npm/
+
+verify:
+  stage: verify
+  script:
+    - npm ci --cache .npm --prefer-offline --no-audit --no-fund
+    - npm run lint
+    - node --test bot-sender/server.test.mjs test/*.test.mjs
+    - npm run build
+  artifacts:
+    when: always
+    paths:
+      - out/
+    expire_in: 1 week

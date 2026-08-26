@@ -1,0 +1,38 @@
+name: century-ai-by
+
+services:
+  century-ai:
+    build:
+      context: .
+      args:
+        SITE_URL: https://century-ai.by
+    ports:
+      - "8090:80"
+    restart: unless-stopped
+    depends_on:
+      bot-sender:
+        condition: service_healthy
+
+  bot-sender:
+    build:
+      context: ./bot-sender
+    restart: unless-stopped
+    env_file:
+      - ./bot-sender/.env
+    environment:
+      SITE_URL: "https://century-ai.by"
+      PORT: "3001"
+    expose:
+      - "3001"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3001/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"
+        ]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 3s

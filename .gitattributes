@@ -1,0 +1,5 @@
+public/hero-video.mp4 filter=lfs diff=lfs merge=lfs -text
+public/hero-video/*.mp4 filter=lfs diff=lfs merge=lfs -text
+public/hero-video/*.webm filter=lfs diff=lfs merge=lfs -text
+# Keep the above-the-fold hero video in regular Git so production clones include it without Git LFS.
+public/hero-video/century-main-visual.mp4 -filter -diff -merge
