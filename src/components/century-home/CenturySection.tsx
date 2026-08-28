@@ -55,7 +55,7 @@ function CaseVideoPreview({
   return (
     <>
       <span className="century-cases__video-placeholder" aria-hidden="true">
-        century
+        CENTURY
       </span>
       <video
         ref={videoRef}

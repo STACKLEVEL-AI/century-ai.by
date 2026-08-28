@@ -8353,9 +8353,12 @@ html:has(.century-home-page) .century-home-hero {
   place-items: center;
   background: #fff;
   color: #000;
-  font-size: 26px;
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-size: 23px;
+  font-weight: 400;
+  letter-spacing: 0;
   line-height: 1;
+  text-transform: uppercase;
   pointer-events: none;
 }
 

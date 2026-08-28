@@ -28,6 +28,7 @@ test("hero keeps the original quality while showing a clean fallback until it ca
   assert.match(cases, /src=\{isActive \? src : undefined\}/);
   assert.match(cases, /preload=\{isActive \? "metadata" : "none"\}/);
   assert.match(cases, /century-cases__video-placeholder/);
+  assert.match(cases, />\s*CENTURY\s*</);
   assert.doesNotMatch(cases, /century-cases__video-placeholder-mark/);
   assert.match(cases, /onLoadedData=\{\(\) => setHasLoadedFrame\(true\)\}/);
   assert.match(cases, /video\.readyState < HTMLMediaElement\.HAVE_CURRENT_DATA/);
