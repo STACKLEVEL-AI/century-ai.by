@@ -4,6 +4,7 @@ export const homeCopy = {
   ru: {
     navigation: {
       items: ["Платформа", "Кейсы", "Режимы", "Безопасность"],
+      contact: "Связаться",
       openMenu: "Открыть меню",
       closeMenu: "Закрыть меню",
       aria: "Основная навигация",
@@ -158,6 +159,7 @@ export const homeCopy = {
   en: {
     navigation: {
       items: ["Platform", "Use cases", "Modes", "Security"],
+      contact: "Contact us",
       openMenu: "Open menu",
       closeMenu: "Close menu",
       aria: "Main navigation",

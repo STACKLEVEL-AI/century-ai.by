@@ -2,44 +2,10 @@
 
 import { useLanguage } from "@/components/site/LanguageProvider";
 import { homeCopy } from "@/lib/home-i18n";
-import { useRef, useState, type CSSProperties } from "react";
+import { useRef, useState } from "react";
 
 const sceneStartTimes = [0, 3, 8, 13, 18] as const;
 const videoRevealDelay = 0.5;
-
-const overlayStyle = {
-  position: "absolute",
-  zIndex: 1,
-  inset: 0,
-  pointerEvents: "none",
-} as const;
-
-const titleStyle = {
-  position: "absolute",
-  bottom: "clamp(46px, 8vh, 88px)",
-  left: "clamp(24px, 6.8vw, 112px)",
-  display: "grid",
-  color: "#fff",
-  fontSize: "clamp(2.15rem, 5vw, 5.5rem)",
-  fontWeight: 400,
-  lineHeight: 0.9,
-  textTransform: "uppercase",
-  textShadow: "0 3px 24px rgba(0, 0, 0, 0.38)",
-} as CSSProperties;
-
-const industriesStyle = {
-  position: "absolute",
-  top: "clamp(108px, 18vh, 190px)",
-  right: "clamp(24px, 6.8vw, 112px)",
-  display: "block",
-  color: "rgba(255, 255, 255, 0.96)",
-  fontSize: "clamp(0.95rem, 2.6vw, 2.7rem)",
-  fontWeight: 400,
-  lineHeight: 0.94,
-  textAlign: "right",
-  textTransform: "uppercase",
-  textShadow: "0 3px 24px rgba(0, 0, 0, 0.38)",
-} as CSSProperties;
 
 export default function HeroSection() {
   const { locale } = useLanguage();
@@ -47,7 +13,7 @@ export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [activeScene, setActiveScene] = useState(0);
   const [videoReady, setVideoReady] = useState(false);
-  const poster = locale === "ru" ? "/hero-video/hero-ru-poster.jpg" : "/hero-video/hero-en-poster.jpg";
+  const fallbackPoster = "/hero-video/hero-fallback.png";
   const industries =
     locale === "ru"
       ? ["Финансы", "Агробизнес", "Металлургия", "Логистика", "Космос"]
@@ -91,7 +57,7 @@ export default function HeroSection() {
       </h1>
       <div
         className="century-home-hero__placeholder"
-        style={{ backgroundImage: `url(${poster})` }}
+        style={{ backgroundImage: `url(${fallbackPoster})` }}
         aria-hidden="true"
       />
 
@@ -103,7 +69,7 @@ export default function HeroSection() {
         muted
         playsInline
         preload="auto"
-        poster={poster}
+        poster={fallbackPoster}
         aria-label={`${copy.lineOne} ${copy.lineTwo}`}
         onTimeUpdate={updateActiveScene}
         onLoadedMetadata={updateActiveScene}
@@ -115,15 +81,14 @@ export default function HeroSection() {
       </video>
 
       <div
-        className={`century-home-hero__overlay${videoReady ? " is-ready" : ""}`}
-        style={overlayStyle}
+        className="century-home-hero__overlay"
         aria-hidden="true"
       >
-        <p className="century-home-hero__title" style={titleStyle}>
+        <p className="century-home-hero__title">
           <span>{copy.lineOne}</span>
           <span>{copy.lineTwo}</span>
         </p>
-        <div className="century-home-hero__industries" style={industriesStyle}>
+        <div className="century-home-hero__industries">
           <span key={activeScene} className="century-home-hero__industry">
             {industries[activeScene]}
           </span>

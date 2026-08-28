@@ -9,7 +9,7 @@ const nginxPath = new URL("../nginx.conf", import.meta.url);
 const originalHeroPath = new URL("../public/hero-video/century-main-visual.mp4", import.meta.url);
 const compressedHeroPath = new URL("../public/hero-video/century-main-visual-compressed.mp4", import.meta.url);
 
-test("hero keeps the original quality while showing a poster until it can play", async () => {
+test("hero keeps the original quality while showing a clean fallback until it can play", async () => {
   const [hero, cases, casesIntro, nginx] = await Promise.all([
     readFile(heroPath, "utf8"),
     readFile(casesPath, "utf8"),
@@ -17,12 +17,13 @@ test("hero keeps the original quality while showing a poster until it can play",
     readFile(nginxPath, "utf8"),
   ]);
 
-  assert.match(hero, /const poster = locale === "ru" \? "\/hero-video\/hero-ru-poster\.jpg" : "\/hero-video\/hero-en-poster\.jpg"/);
-  assert.match(hero, /poster=\{poster\}/);
+  assert.match(hero, /const fallbackPoster = "\/hero-video\/hero-fallback\.png"/);
+  assert.match(hero, /poster=\{fallbackPoster\}/);
   assert.match(hero, /preload="auto"/);
   assert.match(hero, /century-main-visual\.mp4/);
   assert.doesNotMatch(hero, /century-main-visual-compressed\.mp4/);
   assert.match(hero, /century-home-hero__placeholder/);
+  assert.match(hero, /className="century-home-hero__overlay"/);
   assert.match(hero, /onPlaying=\{handleVideoPlaying\}/);
   assert.match(cases, /src=\{isActive \? src : undefined\}/);
   assert.doesNotMatch(casesIntro, /cases-intro-slide__word-space/);
