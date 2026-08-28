@@ -23,6 +23,15 @@ function CaseVideoPreview({
   isActive: boolean;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [hasLoadedFrame, setHasLoadedFrame] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) return;
+
+    const frame = window.requestAnimationFrame(() => setHasLoadedFrame(true));
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -44,16 +53,22 @@ function CaseVideoPreview({
   }, [isActive]);
 
   return (
-    <video
-      ref={videoRef}
-      className="century-cases__video"
-      loop
-      muted
-      playsInline
-      src={isActive ? src : undefined}
-      preload={isActive ? "metadata" : "none"}
-      aria-label={label}
-    />
+    <>
+      <span className="century-cases__video-placeholder" aria-hidden="true">
+        <span className="century-cases__video-placeholder-mark" />
+      </span>
+      <video
+        ref={videoRef}
+        className={`century-cases__video${hasLoadedFrame ? " is-loaded" : ""}`}
+        loop
+        muted
+        playsInline
+        src={src}
+        preload="auto"
+        onLoadedData={() => setHasLoadedFrame(true)}
+        aria-label={label}
+      />
+    </>
   );
 }
 

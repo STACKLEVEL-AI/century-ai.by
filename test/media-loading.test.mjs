@@ -25,7 +25,11 @@ test("hero keeps the original quality while showing a clean fallback until it ca
   assert.match(hero, /century-home-hero__placeholder/);
   assert.match(hero, /className="century-home-hero__overlay"/);
   assert.match(hero, /onPlaying=\{handleVideoPlaying\}/);
-  assert.match(cases, /src=\{isActive \? src : undefined\}/);
+  assert.match(cases, /src=\{src\}/);
+  assert.match(cases, /preload="auto"/);
+  assert.match(cases, /century-cases__video-placeholder/);
+  assert.match(cases, /onLoadedData=\{\(\) => setHasLoadedFrame\(true\)\}/);
+  assert.match(cases, /video\.readyState < HTMLMediaElement\.HAVE_CURRENT_DATA/);
   assert.doesNotMatch(casesIntro, /cases-intro-slide__word-space/);
   assert.match(nginx, /Cache-Control "public, max-age=2592000, immutable"/);
   await Promise.all([readFile(originalHeroPath), readFile(compressedHeroPath)]);
