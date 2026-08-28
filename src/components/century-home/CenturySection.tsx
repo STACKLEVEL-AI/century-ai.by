@@ -55,7 +55,7 @@ function CaseVideoPreview({
   return (
     <>
       <span className="century-cases__video-placeholder" aria-hidden="true">
-        <span className="century-cases__video-placeholder-mark" />
+        century
       </span>
       <video
         ref={videoRef}
@@ -63,8 +63,8 @@ function CaseVideoPreview({
         loop
         muted
         playsInline
-        src={src}
-        preload="auto"
+        src={isActive ? src : undefined}
+        preload={isActive ? "metadata" : "none"}
         onLoadedData={() => setHasLoadedFrame(true)}
         aria-label={label}
       />
