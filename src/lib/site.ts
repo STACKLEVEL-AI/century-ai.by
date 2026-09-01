@@ -10,7 +10,7 @@ export const CONTACT_EMAIL = "v.bakhmat@stacklevel.group";
 export const CONTACT_PHONE = "+375 (29) 668-21-27";
 export const CONTACT_PHONE_RAW = "+375296682127";
 export const TELEGRAM_HANDLE = "vitalibakhmat";
-export const OG_IMAGE_PATH = "/og/century-ai-og.png";
+export const OG_IMAGE_PATH = "/og/century-ai-preview.png";
 
 export type NavItem = {
   href: string;
