@@ -2,8 +2,6 @@ import type { MetadataRoute } from "next";
 import { SITE_URL, canonicalPath } from "@/lib/site";
 
 export const dynamic = "force-static";
-const LAST_CONTENT_UPDATE = new Date("2026-08-05T00:00:00.000Z");
-
 const routes = [
   { path: "/", priority: 1 },
   { path: "/platform", priority: 0.9 },
@@ -20,7 +18,6 @@ const routes = [
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: absoluteUrl(canonicalPath(route.path)),
-    lastModified: LAST_CONTENT_UPDATE,
     changeFrequency: "weekly",
     priority: route.priority,
   }));

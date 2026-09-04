@@ -1,7 +1,7 @@
 # Century by Stacklevel Group
 
 - Canonical URL: https://century-ai.by/
-- Language: ru-RU
+- Language: ru-BY
 - Last updated: 2026-08-05
 
 ## Project summary

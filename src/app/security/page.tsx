@@ -4,7 +4,7 @@ import {
   PreviewBoard,
   SecurityGovernanceAccordion,
 } from "@/components/site/Sections";
-import { SITE_URL, absoluteUrl, createPageMetadata } from "@/lib/site";
+import { HTML_LANG, SITE_URL, absoluteUrl, createPageMetadata } from "@/lib/site";
 import { securityFaqs } from "@/lib/site-content";
 
 const securityBlocks = [
@@ -46,7 +46,7 @@ const faqStructuredData = {
   "@type": "FAQPage",
   "@id": `${SITE_URL}/security/#faq`,
   url: absoluteUrl("/security/"),
-  inLanguage: "ru-RU",
+  inLanguage: HTML_LANG,
   mainEntity: securityFaqs.map((faq) => ({
     "@type": "Question",
     name: faq.question,

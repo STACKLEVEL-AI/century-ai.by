@@ -6,6 +6,8 @@ import {
   COMPANY_NAME,
   CONTACT_EMAIL,
   CONTACT_PHONE_RAW,
+  HTML_LANG,
+  OG_LOCALE,
   OG_IMAGE_PATH,
   SITE_NAME,
   SITE_TAGLINE,
@@ -99,7 +101,7 @@ export const metadata: Metadata = {
       "Платформа управляемого внедрения корпоративного ИИ: workflow, готовые сервисы, ассистенты, журнал исполнения и эксплуатационные метрики.",
     url: SITE_URL,
     siteName: SITE_NAME,
-    locale: "ru_RU",
+    locale: OG_LOCALE,
     type: "website",
     images: [
       {
@@ -152,7 +154,7 @@ const structuredData = {
       "@id": `${SITE_URL}/#website`,
       url: absoluteUrl("/"),
       name: SITE_NAME,
-      inLanguage: "ru-RU",
+      inLanguage: HTML_LANG,
       publisher: {
         "@id": `${SITE_URL}/#organization`,
       },
@@ -206,7 +208,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={lato.variable}>
+    <html lang={HTML_LANG} className={lato.variable}>
       <body>
         <SiteChrome>{children}</SiteChrome>
         <Script id="yandex-metrika" strategy="afterInteractive">

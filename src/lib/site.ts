@@ -3,6 +3,10 @@ import type { Metadata } from "next";
 const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 
 export const SITE_URL = (configuredSiteUrl || "https://century-ai.by").replace(/\/$/, "");
+export const REGION = "BY";
+export const HTML_LANG = "ru-BY";
+export const OG_LOCALE = "ru_BY";
+export const ALTERNATE_SITE_URL = "https://century-ai.ru";
 export const SITE_NAME = "Century";
 export const SITE_TAGLINE = "Платформа управляемого внедрения корпоративного ИИ";
 export const COMPANY_NAME = "Stacklevel Group";
@@ -89,6 +93,10 @@ export function createPageMetadata({
     keywords: [...COMMON_KEYWORDS, ...keywords],
     alternates: {
       canonical: normalizedPath,
+      languages: {
+        "ru-BY": absoluteUrl(normalizedPath),
+        "ru-RU": `${ALTERNATE_SITE_URL}${normalizedPath}`,
+      },
     },
     robots: {
       index: true,
@@ -107,7 +115,7 @@ export function createPageMetadata({
       url,
       siteName: SITE_NAME,
       type: "website",
-      locale: "ru_RU",
+      locale: OG_LOCALE,
       images: [
         {
           url: absoluteUrl(OG_IMAGE_PATH),
